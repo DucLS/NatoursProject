@@ -12,3 +12,44 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+/*
+$breakpoint arguments:
+- phone
+- tablet-port
+- tablet-land
+- big-desktop
+
+ORDER responsive: Base + Typography -> General layout + Grid -> Page layout -> Components
+*/
+@mixin respond($breakpoint) {
+  @if ($breakpoint == phone) {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == tablet-port) {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == tablet-land) {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == big-desktop) {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
